@@ -8,11 +8,14 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Register } from "../Redux/AuthReducer/action";
 
 export const SignUp = () => {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleUser = (e) => {
     const { id, value } = e.target;
     if (id == "phone") {
@@ -53,22 +56,14 @@ export const SignUp = () => {
       alert("Passwords doesn't match");
       return;
     }
-    axios({
-      url: "http://localhost:5000/user",
-      method: "POST",
-      data: user,
-    })
-      .then((res) => {
-        console.log(res.data);
-        if (res.data.status) {
-          navigate("/");
-        } else {
-          alert(res.data.message);
-        }
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    dispatch(Register({ ...user, userType: "user" })).then((r) => {
+      console.log({ r });
+      if (r === "REGISTER_SUCCESS") {
+        navigate("/");
+      } else {
+        alert(r.data.message);
+      }
+    });
   };
   return (
     <Box mt="1em">

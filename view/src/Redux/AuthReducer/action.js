@@ -17,8 +17,9 @@ export const registerFailure = (payload) => ({
 
 export const Register = (payload) => (dispatch) => {
   dispatch(registerRequest());
+  console.log({ payload });
   return axios
-    .post("http://localhost:5000/user", payload)
+    .post("http://localhost:5000/api/user/register", payload)
     .then((r) => {
       dispatch(registerSuccess(r.data));
       return types.REGISTER_SUCCESS;

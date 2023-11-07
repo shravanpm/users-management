@@ -6,6 +6,7 @@ import { SignUp } from "../Components/SignUp";
 import { Users } from "../Components/Users";
 import { Login } from "../Components/Login";
 import RequiredAuth from "../Components/RequiredAuth";
+import { Chat } from "../Components/Chat";
 
 export const AllRoutes = () => {
   return (
@@ -22,6 +23,7 @@ export const AllRoutes = () => {
         ></Route>
         <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/chat" element={<Chat />}></Route>
       </Routes>
     </Box>
   );

@@ -41,24 +41,6 @@ export const Login = () => {
       console.log({ r });
       navigate("/");
     });
-    /*
-    axios({
-      url: "http://localhost:5000/api/user/login",
-      method: "POST",
-      data: user,
-    })
-      .then((res) => {
-        console.log(res.data);
-        if (res.data.status) {
-          navigate("/");
-        } else {
-          alert(res.data.message);
-        }
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-      */
   };
   return (
     <Box mt="1em">
